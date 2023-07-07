@@ -8,20 +8,34 @@ public class EnemyShot : MonoBehaviour
     public AudioClip sound;
     private int count;
 
+    [SerializeField]
+    int speed = 500;
+    
+    [SerializeField]
+    int space = 640;
+
     void Start()
     {
         
     }
 
-
     void Update()
     {
-
         count += 1;
 
-        if(count % 60 == 0)
+        if(count % space == 0)
         {
-            GameObject shell = 
+
+            GameObject Shell = Instantiate(shellPrefab, transform.position, Quaternion.identity);
+            Rigidbody ShellRb = Shell.GetComponent<Rigidbody>();
+
+            ShellRb.AddForce(transform.forward * speed);//íeë¨
+
+            Destroy(Shell, 2.0f);//2ïbå„Ç…ãÖè¡Ç¶ÇÈ
+
+            AudioSource.PlayClipAtPoint(sound, transform.position);//âπ
         }
+
+
     }
 }

@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class Player2Controller : MonoBehaviour
 {
-    Rigidbody rb;
+    Rigidbody rb2;
 
     [SerializeField]
     float movespeed = 3.0f;
@@ -23,10 +23,10 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        rb2 = GetComponent<Rigidbody>();
     }
 
-    
+
     void Update()
     {
         // transformを取得
@@ -38,46 +38,46 @@ public class PlayerController : MonoBehaviour
         worldPos.z = 1.0f;    // ワールド座標を基準にした、z座標を1に変更
         myTransform.position = worldPos;  // ワールド座標での座標を設定
 
-        if (Input.GetKey(KeyCode.D))
+        if (Input.GetKey(KeyCode.LeftArrow))
         {
             // 左に移動する
             //transform.position += movespeed * transform.right * Time.deltaTime;
             worldPos.x = 5.0f;
             worldPos.y = 1.0f;
-            worldPos.z = 1.0f;
+            worldPos.z = 60.0f;
             myTransform.position = worldPos;
         }
-        else if(!Input.GetKey(KeyCode.A))
+        else if (!Input.GetKey(KeyCode.RightArrow))
         {
             worldPos.x = 0.0f;
             worldPos.y = 1.0f;
-            worldPos.z = 1.0f;
+            worldPos.z = 60.0f;
             myTransform.position = worldPos;
         }
 
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.RightArrow))
         {
             // 右に移動する
             //transform.position += movespeed * -transform.right * Time.deltaTime;
             worldPos.x = -5.0f;
             worldPos.y = 1.0f;
-            worldPos.z = 1.0f;
+            worldPos.z = 60.0f;
             myTransform.position = worldPos;
         }
-        else if (!Input.GetKey(KeyCode.D))
+        else if (!Input.GetKey(KeyCode.LeftArrow))
         {
             worldPos.x = 0.0f;
             worldPos.y = 1.0f;
-            worldPos.z = 1.0f;
+            worldPos.z = 60.0f;
             myTransform.position = worldPos;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space)|| Input.GetKeyDown(KeyCode.V) || Input.GetKeyDown(KeyCode.B))
+        if (Input.GetKeyDown(KeyCode.L) || Input.GetKeyDown(KeyCode.V) || Input.GetKeyDown(KeyCode.B))
         {
             // 弾を発射する
             LauncherShot();
         }
-        if (Input.GetKey(KeyCode.R))
+        if (Input.GetKey(KeyCode.P))
         {
             // 弾を発射する
             LauncherShot();
